@@ -19,7 +19,7 @@ app.layout = html.Div([
     html.H1(children='Data visualization project',style={'text-align':'left','color':'white'}),
     html.H2(children='Fernandez\nRoman',style={'text-align':'left','color':'white'}),
     html.Div([
-        html.H2(children='1st graph',style={'text-align':'left','color':'white'}),
+        html.H2(children='First graph',style={'text-align':'left','color':'white','text-decoration': 'underline'}),
         html.Div([
             html.Div([
                 dcc.Dropdown(
@@ -51,11 +51,11 @@ app.layout = html.Div([
         )
     ]),
     html.Div([
-        html.H2(children='Second graph',style={'margin-top':'5%','text-align':'center','font-family':'monospace'}),
+        html.H2(children='Second graph',style={'margin-top':'5%','text-align':'left','color':'white','text-decoration': 'underline'}),
         html.Div([
             html.Div([
                 dcc.Dropdown(
-                    id='indicator-select',
+                    id='indicator',
                     options=[{'label': i, 'value': i} for i in available_indicators],
                     value='Current prices, million euro'
                 ),
@@ -64,7 +64,7 @@ app.layout = html.Div([
 
             html.Div([
                 dcc.Dropdown(
-                    id='country-select',
+                    id='country',
                     options=[{'label': i, 'value': i} for i in available_geo],
                     value='Spain'
                 ),
@@ -72,7 +72,7 @@ app.layout = html.Div([
         ]),
         dcc.Graph(id='output2'),
     ])
-],style={'background-color':'black'})
+],style={'background-color':'rgba(0, 0, 0, 0.72)'})
 
 @app.callback(
     dash.dependencies.Output('output1', 'figure'),
@@ -110,8 +110,8 @@ def update_graph(xaxis_column_name, yaxis_column_name, year_value):
     }
 @app.callback(
     dash.dependencies.Output('output2', 'figure'),
-    [dash.dependencies.Input('indicator-select', 'value'),
-     dash.dependencies.Input('country-select', 'value'),])
+    [dash.dependencies.Input('indicator', 'value'),
+     dash.dependencies.Input('country', 'value'),])
 def update_graph(indicator_name, country_name):
     dff = df[df['GEO'] == country_name]
 
