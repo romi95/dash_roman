@@ -44,7 +44,7 @@ app.layout = html.Div([
             id='year--slider',
             min=df['TIME'].min(),
             max=df['TIME'].max(),
-            value=2010,
+            value=2007,
             step=None,
             marks={str(year): str(year) for year in df['TIME'].unique()}
         )
